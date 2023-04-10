@@ -1,24 +1,100 @@
 
+
+
 <!DOCTYPE html>
+
 <html>
+
 <head>
-  <title>Twittr Video Downloader</title>
+
+  <title>Twitter Video Downloader</title>
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
+
   <div class="container">
+
     <h1>Twitter Video Downloader</h1>
+
     <form>
+
       <label for="url">Enter the URL of the Twitter video:</label>
+
       <input type="text" id="url" name="url" placeholder="https://twitter.com/username/status/1234567890123456789">
+
       <button type="submit" id="download-btn">Download</button>
+
     </form>
+
     <div id="download-link"></div>
+
   </div>
 
-  <script src="script.js"></script>
+  <script>
+
+    const form = document.querySelector('form');
+
+    form.addEventListener('submit', async (event) => {
+
+      event.preventDefault();
+
+      const url = document.getElementById('url').value.trim();
+
+      if (!url) {
+
+        alert('Please enter a valid URL');
+
+        return;
+
+      }
+
+      const response = await fetch('/download', {
+
+        method: 'POST',
+
+        headers: {
+
+          'Content-Type': 'application/json'
+
+        },
+
+        body: JSON.stringify({ url })
+
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+
+        const downloadLink = document.createElement('a');
+
+        downloadLink.setAttribute('href', data.url);
+
+        downloadLink.setAttribute('download', '');
+
+        downloadLink.click();
+
+      } else {
+
+        alert('An error occurred while downloading the video');
+
+      }
+
+    });
+
+  </script>
+
 </body>
+
 </html>
+
+
+
+
 
 
