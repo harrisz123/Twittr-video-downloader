@@ -1,1 +1,51 @@
 
+.container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 36px;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+}
+
+label {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+input[type="text"] {
+  font-size: 18px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+button[type="submit"] {
+  font-size: 18px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #1da1f2;
+  color: white;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #0d8ecf;
+}
+
+#download-link {
+  display: none;
+  font-size: 18px;
+  margin-top: 20px;
+  text-align: center;
+}
